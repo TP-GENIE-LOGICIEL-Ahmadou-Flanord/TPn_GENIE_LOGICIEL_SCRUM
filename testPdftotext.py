@@ -28,8 +28,10 @@ for filename in os.listdir(abs_file_path):
     file_path = os.path.abspath(filename)
     print(file_path )
     os.chdir(abs_file_path+"/Output")
+    outputName = filename.split(",")[0];
+    print outputName + "txt"
     print os.getcwd() + " 2"
-    subprocess.call(["pdftotext", file_path,"-layout"])
+    subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
     os.chdir(abs_file_path)
     print os.getcwd() + " 3"
 
