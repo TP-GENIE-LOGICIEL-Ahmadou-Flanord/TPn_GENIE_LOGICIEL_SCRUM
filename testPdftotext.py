@@ -12,10 +12,26 @@ path = 'Papers'
 output = '../papers/output/'
 abs_file_path = os.path.join(script_dir, path)
 print abs_file_path	
+#print os.listdir(abs_file_path)
+os.chdir(abs_file_path)
+print os.getcwd() + " 1"
+try:
+    os.stat(abs_file_path+"/Output")
+except:
+    os.mkdir(abs_file_path+"/Output")  
 for filename in os.listdir(abs_file_path):
+
+
     # do your stuff
-    print(filename + " erttr")
-    #subprocess.call(["pdftotext", str(filename), str(path),"-layout"])
+    print filename
+   
+    file_path = os.path.abspath(filename)
+    print(file_path )
+    os.chdir(abs_file_path+"/Output")
+    print os.getcwd() + " 2"
+    subprocess.call(["pdftotext", file_path,"-layout"])
+    os.chdir(abs_file_path)
+    print os.getcwd() + " 3"
 
 
 
