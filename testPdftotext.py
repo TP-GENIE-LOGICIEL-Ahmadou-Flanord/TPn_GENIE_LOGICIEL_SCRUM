@@ -19,46 +19,74 @@ try:
     os.stat(abs_file_path+"/Output")
 except:
     os.mkdir(abs_file_path+"/Output")  
-# for filename in os.listdir(abs_file_path):
+for filename in os.listdir(abs_file_path):
 
 
-#     # do your stuff
-#     print filename
+    # do your stuff
+    print filename
    
-#     file_path = os.path.abspath(filename)
-#     print(file_path )
-#     os.chdir(abs_file_path+"/Output")
-#     outputName = filename.split(",")[0];
-#     print outputName + "txt"
-#     print os.getcwd() + " 2"
-#     subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
-#     os.chdir(abs_file_path)
-#     print os.getcwd() + " 3"
+    file_path = os.path.abspath(filename)
+    print(file_path )
+    os.chdir(abs_file_path+"/Output")
+    outputName = filename.split(",")[0];
+    print outputName + "txt"
+    print os.getcwd() + " 2"
+    subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
+    #ExtractTExt(str(os.getcwd()+"/"+outputName+".txt"))
+    fic =str(os.getcwd()+"/"+outputName+".txt")
+    f = open(fic, 'r')
+    data = f.read()
+    splat = data.split("\n\n")
+    text = ""
+    for number, paragraph in enumerate(splat, 1):
+    	print "number " ,number
+    	if "Abstract" not in paragraph :
+    		text +=paragraph
+    	else :
+			print ("on the Abstract")
+			#print paragraph 
+			text  +=paragraph
+			break
+	f.close()
+	with open(fic, 'w+') as f:
+		f.write(text)
+	f.close()
+
+	os.chdir(abs_file_path)
+	print os.getcwd() + " 3"
 
 #for filename in os.listdir(abs_file_path+"/Output"):
 
 
     # do your stuff
     
-os.chdir(abs_file_path+"/Output")
-filename="Alexandrov_2015_A Modified Tripartite Model for Document Representation in Internet Sociology.pdf.txt"
+#os.chdir(abs_file_path+"/Output")
 
-f = open(filename, 'r')
+def ExtractTExt(filename):
+	
+	f = open(filename, 'r')
 
-data = f.read()
-array1 = []
-array2 = []
-array3 = []
-splat = data.split("\n\n")
-for number, paragraph in enumerate(splat, 1):
-	print "number " ,number
-	if "Abstract" not in paragraph :
-		print paragraph
-	else:
-		print ("on the Abstract")
-		print paragraph 
-		x=1
-		break
+	data = f.read()
+	array1 = []
+	array2 = []
+	array3 = []
+	splat = data.split("\n\n")
+	text = ""
+	for number, paragraph in enumerate(splat, 1):
+		print "number " ,number
+		if "Abstract" not in paragraph :
+			#print paragraph
+			text +=paragraph
+		else:
+			print ("on the Abstract")
+			#print paragraph 
+			text  +=paragraph
+			break
+	f.close()
+	with open(filename, 'w+') as f:
+	    f.write(text)
+	f.close()
+
 
 # 	if number % 3 == 1:
 # 		array1 += [paragraph]
