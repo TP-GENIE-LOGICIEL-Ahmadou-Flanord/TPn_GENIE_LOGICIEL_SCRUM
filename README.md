@@ -25,4 +25,13 @@ Mais notre choix de langage de programmation va se porter sur Python pour les ra
 	- Souplesse du langage par rapport au produit à fournir,
 	- Facilité d'utilisation et d'intégration du Langage 
   
-  
+
+
+# Fonctionnement 
+
+fichier de test : testpdftotext.py
+
+On lance le fichier test avec la commande : python testPdfototext.py
+
+et le programme derrière ouvre un dossier Papers( contenu dans le projet).
+Ensuite il parcourt l'ensemble des fichiers du dossier, fait la conversion et l'enregistre sous un même nom avec une extension .txt dans un sous-dossier Output
