@@ -1,5 +1,8 @@
 import subprocess
 import os
+import sys
+
+params=sys.argv
 #script_dir = os.path.dirname(__file__)
 #print script_dir + " dfsdf"	
 script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
@@ -24,6 +27,8 @@ for filename in os.listdir(abs_file_path):
 
     # do your stuff
     print filename
+    os.chdir(abs_file_path)
+    print os.getcwd() + " 3"
    
     file_path = os.path.abspath(filename)
     print(file_path )
@@ -33,27 +38,31 @@ for filename in os.listdir(abs_file_path):
     print os.getcwd() + " 2"
     subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
     #ExtractTExt(str(os.getcwd()+"/"+outputName+".txt"))
+
     fic =str(os.getcwd()+"/"+outputName+".txt")
     f = open(fic, 'r')
     data = f.read()
     splat = data.split("\n\n")
     text = ""
-    for number, paragraph in enumerate(splat, 1):
-    	print "number " ,number
-    	if "Abstract" not in paragraph :
-    		text +=paragraph
-    	else :
-			print ("on the Abstract")
-			#print paragraph 
-			text  +=paragraph
-			break
-	f.close()
-	with open(fic, 'w+') as f:
-		f.write(text)
-	f.close()
-
-	os.chdir(abs_file_path)
-	print os.getcwd() + " 3"
+    mode = params[1]
+    print( mode)
+    if mode == "-x":
+    	print("kjkldfjdk")
+    else:
+    	for number, paragraph in enumerate(splat, 1):
+    		print "number " ,number
+    		if "Abstract" not in paragraph :
+    			text +=paragraph
+    		else :
+    			print ("on the Abstract")
+    			text  +=paragraph
+    			break
+    			f.close()
+			with open(fic, 'w+') as f:
+				f.write(text)
+			f.close()
+	
+	
 
 #for filename in os.listdir(abs_file_path+"/Output"):
 
