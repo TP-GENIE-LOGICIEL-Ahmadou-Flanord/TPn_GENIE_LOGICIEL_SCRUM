@@ -19,22 +19,50 @@ try:
     os.stat(abs_file_path+"/Output")
 except:
     os.mkdir(abs_file_path+"/Output")  
-for filename in os.listdir(abs_file_path):
+# for filename in os.listdir(abs_file_path):
+
+
+#     # do your stuff
+#     print filename
+   
+#     file_path = os.path.abspath(filename)
+#     print(file_path )
+#     os.chdir(abs_file_path+"/Output")
+#     outputName = filename.split(",")[0];
+#     print outputName + "txt"
+#     print os.getcwd() + " 2"
+#     subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
+#     os.chdir(abs_file_path)
+#     print os.getcwd() + " 3"
+
+#for filename in os.listdir(abs_file_path+"/Output"):
 
 
     # do your stuff
-    print filename
-   
-    file_path = os.path.abspath(filename)
-    print(file_path )
-    os.chdir(abs_file_path+"/Output")
-    outputName = filename.split(",")[0];
-    print outputName + "txt"
-    print os.getcwd() + " 2"
-    subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
-    os.chdir(abs_file_path)
-    print os.getcwd() + " 3"
+    
+os.chdir(abs_file_path+"/Output")
+filename="Doyle_2005_Automatic Categorization of Author Gender.pdf.txt"
+#print filename
+with open(filename) as f:
+	for line in f:
+		if "Abstract" not in line :
+			
+			print line
+		else:
+			print ("on the Abstract")
+			break;
 
+
+   
+    # file_path = os.path.abspath(filename)
+    # print(file_path )
+    # os.chdir(abs_file_path+"/Output")
+    # outputName = filename.split(",")[0];
+    # print outputName + "txt"
+    # print os.getcwd() + " 2"
+    # subprocess.call(["pdftotext", file_path,str(os.getcwd()+"/"+outputName+".txt"),"-layout"])
+    # os.chdir(abs_file_path)
+    # print os.getcwd() + " 3"
 
 
 
