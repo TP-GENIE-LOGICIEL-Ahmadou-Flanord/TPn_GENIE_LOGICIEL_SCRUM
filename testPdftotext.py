@@ -41,17 +41,47 @@ except:
     # do your stuff
     
 os.chdir(abs_file_path+"/Output")
-filename="Doyle_2005_Automatic Categorization of Author Gender.pdf.txt"
-#print filename
-with open(filename) as f:
-	for line in f:
-		if "Abstract" not in line :
-			
-			print line
-		else:
-			print ("on the Abstract")
-			break;
+filename="Alexandrov_2015_A Modified Tripartite Model for Document Representation in Internet Sociology.pdf.txt"
 
+f = open(filename, 'r')
+
+data = f.read()
+array1 = []
+array2 = []
+array3 = []
+splat = data.split("\n\n")
+for number, paragraph in enumerate(splat, 1):
+	print "number " ,number
+	if "Abstract" not in paragraph :
+		print paragraph
+	else:
+		print ("on the Abstract")
+		print paragraph 
+		x=1
+		break
+
+# 	if number % 3 == 1:
+# 		array1 += [paragraph]
+# 	elif number % 3 == 2:
+# 		array2 += [paragraph]
+# 	elif number % 3 == 0:
+# 		array3 += [paragraph]
+# #print filename
+# x=0
+# with open(filename) as f:
+# 	for line in f:
+# 		if x==1:
+# 			print ("terminus")
+# 			print line 
+# 			break 
+# 		if "Abstract" not in line :
+			
+# 			print line
+# 		else:
+# 			print ("on the Abstract")
+# 			print line 
+# 			x=1
+			
 
    
     # file_path = os.path.abspath(filename)
