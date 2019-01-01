@@ -48,6 +48,12 @@ for filename in os.listdir(abs_file_path):
     print( mode)
     if mode == "-x":
     	print("kjkldfjdk")
+    	if number % 3 == 1:
+			print("titre")
+		elif number % 3 == 2:
+			print("debut")
+		elif number % 3 == 0:
+			print("Abstract")
     else:
     	for number, paragraph in enumerate(splat, 1):
     		print "number " ,number
