@@ -1,6 +1,16 @@
 import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+try:
+    if sys.version[0] == '2':
+	    reload(sys)
+	    sys.setdefaultencoding("utf-8")
+	
+except NameError:
+    try:
+        from importlib import reload  # Python 3.4+
+
+    except ImportError:
+        from imp import reload  # Python 3.0 - 3.3
+    reload(sys)
 import xml.etree.cElementTree as ET
 
 class Xml_Layout:
